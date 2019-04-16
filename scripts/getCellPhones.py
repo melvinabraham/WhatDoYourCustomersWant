@@ -12,5 +12,4 @@ with open('E:\Windows\ASU\AmazonVis\scripts\\final_Cell_Phones_and_Accessories.j
     outfile.seek(-1, os.SEEK_END)
     outfile.truncate()
     outfile.write("]")
-
 print count
