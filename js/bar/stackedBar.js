@@ -1,19 +1,13 @@
 function stackedBar(curr_year){
 //d3.selectAll("#stacked-bar").remove();
-var initStackedBarChart = {
 	
-	draw: function(config) {
-	
-//		d3.selectAll(".layer").remove();
-	//	d3.selectAll(".axis--x").remove();
-		//d3.selectAll(".axis--y").remove();
+	function draw(config) {
 
 		me = this,
-		//domEle = config.element,
 		stackKey = config.key,
 		data = config.data,
 		
-		margin = {top: 20, right: 80, bottom: 30, left: 50},
+		/*margin = {top: 20, right: 80, bottom: 30, left: 50},
 		//parseDate = d3.timeParse("%m/%Y"),
 		width = 960 - margin.left - margin.right,
 		height = 500 - margin.top - margin.bottom,
@@ -23,13 +17,18 @@ var initStackedBarChart = {
 		xAxis = d3.axisBottom(xScale),
 		yAxis =  d3.axisLeft(yScale),	//.tickFormat(,
 		
+		
 		svg = d3.select("#stacked-bar").append("svg")
 				.attr("width", width + margin.left + margin.right)
 				.attr("height", height + margin.top + margin.bottom)
 				.append("g")
 				.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 				.attr('class','bar');
-
+		*/
+		
+		color = d3.scaleOrdinal().range(["#a7cc74", "#f46842"]);
+		
+		svg = d3.select("#stacked-bar").select("svg");
 		var stack = d3.stack()
 			.keys(stackKey)
 			/*.order(d3.stackOrder)*/
@@ -62,7 +61,18 @@ var initStackedBarChart = {
 			.attr("width", function(d) { return xScale(d[1]) - xScale(d[0]) });
 
 			
-			svg.append("g")
+			
+			svg.select('.axis axis--x')
+			.transition()
+			.duration(duration)
+			.call(xAxis);
+
+			svg.select('.axis axis--y')
+			.transition()
+			.duration(duration)
+			.call(yAxis);
+		
+			/*svg.append("g")
 			.attr("class", "axis axis--x")
 			.attr("transform", "translate(0," + (height+5) + ")")
 			.call(xAxis);
@@ -70,9 +80,10 @@ var initStackedBarChart = {
 			svg.append("g")
 			.attr("class", "axis axis--y")
 			.attr("transform", "translate(0,0)")
-			.call(yAxis);							
+			.call(yAxis);
+			*/			
 	}
-}
+
 
 
 
@@ -101,42 +112,18 @@ function GetYearData(featureData,year){
 	}
 	
 	return year_data
-	
 }
+	
+
 
 var feature_data = d3.json("data/year_feature_data.json").then(function(data) {
 	
 	res_data = GetYearData(data,curr_year);
 	
-	initStackedBarChart.draw({
-	data: res_data,
-	key: key,
-	element: 'stacked-bar'
-	});
+	draw({	data: res_data,	key: key,	element: 'stacked-bar'	});
 	return data
 	});
 
 var key = ["positive_count","negative_count"];
-
-
-//console.log(feature_data)
-
-
-/*var data = [{"year":2000,"feature":"Screen","count":100,"positive_count":40,"negative_count":60},
-			{"year":2000,"feature":"Camera","count":200,"positive_count":120,"negative_count":80},
-			{"year":2001,"feature":"feature3","count":150,"positive_count":100,"negative_count":50},
-			{"year":2001,"feature":"App","count":50,"positive_count":10,"negative_count":40},
-			{"year":2002,"feature":"feature4","count":1000,"positive_count":800,"negative_count":200},
-			{"year":2003,"feature":"Battery","count":120,"positive_count":100,"negative_count":20}];
-
-//var key = ["Screen", "Camera", "App","Battery"];
-var key = ["positive_count","negative_count"];
-
-initStackedBarChart.draw({
-	data: data,
-	key: key,
-	element: 'stacked-bar'
-});
-*/
 
 }
