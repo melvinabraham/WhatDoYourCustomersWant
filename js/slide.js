@@ -2,10 +2,10 @@ var data = [0, 0.005, 0.01, 0.015, 0.02, 0.025];
 // Time
 var dataTime = d3.range(0, 10).map(function(d) {
 
-  return new Date(1995 + d, 10, 3);
+  return new Date(2004 + d, 10, 3);
 });
 
-var value = 2001
+var value = 2003
 bubble(value);
 
 var sliderTime = d3

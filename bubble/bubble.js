@@ -15,14 +15,20 @@ function bubble(value) {
 
     window.setTimeout(function () { buildbubble() }, 350)
 
-    function buildbubble() {
-
+    function buildbubble() {        
         d3.selectAll(".bubble").remove();
-        
-        file = "/bubble/" + value + ".json";
+        file = "/data/unfiltered/year_features_5" + ".json";
+        data = {"children" : []}
         console.log('opening: ' + file)
         d3.json(file).then(function (dataset) {
-            console.log(dataset.children[0])
+            value = value.toString();
+            console.log(dataset.value)
+            d = dataset[value]["__overall"]["opinions"]
+            for (var ele in d) {
+                data["children"].push({"Count":d[ele] ,"Name": ele});
+            }
+            dataset = data
+            console.log(dataset)
             var diameter = 650;
             var color = d3.scaleOrdinal(d3.schemeCategory20);
 

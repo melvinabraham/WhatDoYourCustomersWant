@@ -1,8 +1,8 @@
 import json
 import os
-count = 0
+year = 2003
 with open('E:\Windows\ASU\AmazonVis\scripts\\final_Cell_Phones_and_Accessories.json') as json_file, open("E:\Windows\ASU\AmazonVis\scripts\\cellphones.json", "a") as outfile:  
-    outfile.write("[")
+
     data = json.load(json_file)
     for d in data:
         if "Cell Phones" in d["categories"]:
