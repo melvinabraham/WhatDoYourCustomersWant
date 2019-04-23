@@ -74,7 +74,7 @@ d3.json(file).then(function (dataset) {
             .attr("x", function (d) { return d.x; })
             .attr("y", function (d) { return d.y; })
             .style("font-size", function(d) {
-                v1 = d.r/2;
+                v1 = d.r;
                 v2 = d.r / 3;
                 console.log("v1: " + v1 + " v2: " + v2)
                 return Math.min(v1, v2) + "px";
