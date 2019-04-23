@@ -66,13 +66,19 @@ d3.json(file).then(function (dataset) {
             .style("fill", "#fff")
             .transition(t)
             .style("fill", "#45b29d")
+            
             .attr("r", function (d) { return d.r });
 
         text.enter().append("text")
             .attr("opacity", 1e-6)
             .attr("x", function (d) { return d.x; })
             .attr("y", function (d) { return d.y; })
-            // .attr("font-size", function (d) { return d.r; })
+            .style("font-size", function(d) {
+                v1 = d.r/2;
+                v2 = d.r / 3;
+                console.log("v1: " + v1 + " v2: " + v2)
+                return Math.min(v1, v2) + "px";
+             })
             .style("text-anchor", "middle")
             .text(function (d) { return d.data.name; })
             .transition(t)
