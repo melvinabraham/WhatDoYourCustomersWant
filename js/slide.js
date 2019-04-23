@@ -5,7 +5,7 @@ var dataTime = d3.range(0, 10).map(function(d) {
   return new Date(2004 + d, 10, 3);
 });
 
-var value = 2003
+var value = 2004
 bubble(value);
 
 var sliderTime = d3
@@ -22,7 +22,7 @@ var sliderTime = d3
     d3.select('p#value-time').text(value);
     if(cur != value) {
       value = cur
-      console.log(cur)
+      // console.log(cur)
       bubble(cur);
     }
 

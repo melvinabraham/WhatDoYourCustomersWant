@@ -13,7 +13,7 @@ function bubble(value) {
             d3.select(this.parentNode).remove()
         });
 
-    window.setTimeout(function () { buildbubble() }, 350)
+    window.setTimeout(function () { buildbubble() }, 350)   
 
     function buildbubble() {        
         d3.selectAll(".bubble").remove();
@@ -22,7 +22,7 @@ function bubble(value) {
         console.log('opening: ' + file)
         d3.json(file).then(function (dataset) {
             value = value.toString();
-            console.log(dataset.value)
+            console.log(dataset.value);
             d = dataset[value]["__overall"]["opinions"]
             for (var ele in d) {
                 data["children"].push({"Count":d[ele] ,"Name": ele});
