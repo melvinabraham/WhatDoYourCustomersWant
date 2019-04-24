@@ -75,7 +75,7 @@ function stackedBarUpdate(curr_year){
 		
 		
 		var bars = layer.selectAll(".rect").data(function(d) {
-			//console.log("Here3");
+			console.log("Here3");
 			console.log(d)
 			return d; });
 			
