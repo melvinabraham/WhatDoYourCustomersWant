@@ -129,6 +129,9 @@ function stackedBarUpdate(curr_year){
 		for (i = 1; i < keys.length; i++) {
 			//console.log("Inside Loop");
 			item = {}
+			if (keys[i] == "phone"){
+				continue;
+			}
 			item["feature"] = keys[i];
 			item["count"] = yD[keys[i]].count;
 			item["positive_count"] = yD[keys[i]].positive_count;
