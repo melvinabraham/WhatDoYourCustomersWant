@@ -81,6 +81,10 @@ function stackedBarUpdate(curr_year){
 			
 		bars.enter()
 			.append("rect")
+			.on("click", function(d){
+            //call bubble funcation
+				console.log(d.data.feature);
+				console.log(curr_year);})
 			.merge(bars)
 			.transition()
 			.duration(duration)
@@ -89,6 +93,7 @@ function stackedBarUpdate(curr_year){
 			.attr("height", yScale.bandwidth())
 			.attr("width", function(d) { return xScale(d[1]) - xScale(d[0]) });
 		
+			
 		bars.exit()
         .transition()
         .duration(duration)

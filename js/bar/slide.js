@@ -17,7 +17,7 @@ var sliderTime = d3
   .width(500)
   .tickFormat(d3.timeFormat('%Y'))
   .tickValues(dataTime)
-  .default(new Date(2006, 10, 3))
+  .default(new Date(2004, 10, 3))
   .on('onchange', val => {
     cur = d3.timeFormat('%Y')(val)
     d3.select('p#value-time').text(value);
