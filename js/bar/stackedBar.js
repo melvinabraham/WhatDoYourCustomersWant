@@ -82,7 +82,7 @@ function stackedBarUpdate(curr_year){
 		bars.enter()
 			.append("rect")
 			.on("click", function(d){
-            //call bubble funcation
+				window.location.href = "bubbleindex.html?year="+curr_year+"&feat="+d.data.feature;
 				console.log(d.data.feature);
 				console.log(curr_year);})
 			.merge(bars)

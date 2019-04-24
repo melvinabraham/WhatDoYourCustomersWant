@@ -1,151 +1,158 @@
 
-file = "/data/unfiltered/year_features_5" + ".json";
-d3.json(file).then(function (dataset) {
+function bubble() {
 
-    console.log("here")
-    slide();
-    var width = window.innerWidth, height = window.innerHeight;
-    var svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
+    const urlParams = new URLSearchParams(window.location.search);
+    const year = urlParams.get('year');	
+    const feat = urlParams.get('feat');	
 
-    var pack = d3.pack()
-        .size([width, height])
-        .padding(1.5);
+    console.log(year)
+    console.log(feat)
+    file = "data\\year_feature_data.json";
+    d3.json(file).then(function (dataset) {
 
-    console.log("redrawing chart with data: ");
-    classes = drawchart(dataset, 2004)
-    console.log(classes)
-    redraw(classes)
+        console.log("here")
+        slide();
+        var width = window.innerWidth, height = window.innerHeight;
+        var svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
 
-    function redraw(classes) {
+        var pack = d3.pack()
+            .size([width, height])
+            .padding(1.5);
 
-        // transition
-        var t = d3.transition()
-            .duration(750);
+        classes = drawchart(dataset, 2004)
+        redraw(classes)
 
-        // hierarchy
-        var h = d3.hierarchy({ children: classes })
-            .sum(function (d) { return d.size; })
+        function redraw(classes) {
 
-        //JOIN
-        var circle = svg.selectAll("circle")
-            .data(pack(h).leaves(), function (d) { return d.data.name; });
+            // transition
+            var t = d3.transition()
+                .duration(750);
 
-        var text = svg.selectAll("text")
-            .data(pack(h).leaves(), function (d) { return d.data.name; });
+            // hierarchy
+            var h = d3.hierarchy({ children: classes })
+                .sum(function (d) { return d.size; })
 
-        //EXIT
-        circle.exit()
-            .style("fill", "#b26745")
-            .transition(t)
-            .attr("r", 1e-6)
-            .remove();
+            //JOIN
+            var circle = svg.selectAll("circle")
+                .data(pack(h).leaves(), function (d) { return d.data.name; });
 
-        text.exit()
-            .transition(t)
-            .attr("opacity", 1e-6)
-            .remove();
+            var text = svg.selectAll("text")
+                .data(pack(h).leaves(), function (d) { return d.data.name; });
 
-        //UPDATE
-        circle
-            .transition(t)
-            .style("fill", "#add8e6")
-            .attr("r", function (d) { return d.r })
-            .attr("cx", function (d) { return d.x; })
-            .attr("cy", function (d) { return d.y; })
+            //EXIT
+            circle.exit()
+                .style("fill", "#b26745")
+                .transition(t)
+                .attr("r", 1e-6)
+                .remove();
 
-        text
-            .transition(t)
-            .attr("x", function (d) { return d.x; })
-            .attr("y", function (d) { return d.y; });
+            text.exit()
+                .transition(t)
+                .attr("opacity", 1e-6)
+                .remove();
 
-        //ENTER
-        circle.enter().append("circle")
-            .attr("r", 1e-6)
-            .attr("cx", function (d) { return d.x; })
-            .attr("cy", function (d) { return d.y; })
-            .style("fill", "#fff")
-            .transition(t)
-            .style("fill", "#45b29d")
-            
-            .attr("r", function (d) { return d.r });
+            //UPDATE
+            circle
+                .transition(t)
+                .style("fill", "#add8e6")
+                .attr("r", function (d) { return d.r })
+                .attr("cx", function (d) { return d.x; })
+                .attr("cy", function (d) { return d.y; })
 
-        text.enter().append("text")
-            .attr("opacity", 1e-6)
-            .attr("x", function (d) { return d.x; })
-            .attr("y", function (d) { return d.y; })
-            .style("font-size", function(d) {
-                v1 = d.r;
-                v2 = d.r / 3;
-                console.log("v1: " + v1 + " v2: " + v2)
-                return Math.min(v1, v2) + "px";
-             })
-            .style("text-anchor", "middle")
-            .text(function (d) { return d.data.name; })
-            .transition(t)
-            .attr("opacity", 1);
-    }
+            text
+                .transition(t)
+                .attr("x", function (d) { return d.x; })
+                .attr("y", function (d) { return d.y; });
 
+            //ENTER
+            circle.enter().append("circle")
+                .attr("r", 1e-6)
+                .attr("cx", function (d) { return d.x; })
+                .attr("cy", function (d) { return d.y; })
+                .style("fill", "#fff")
+                .transition(t)
+                .style("fill", "#45b29d")
 
-    function drawchart(dataset, year) {
-        data = []
-        console.log("Drawchart, year: " + year)
-        d = dataset[year]["__overall"]["opinions"]
-        for (var ele in d) {
-            data.push({ "name": ele, "size": d[ele] });
+                .attr("r", function (d) { return d.r });
+
+            text.enter().append("text")
+                .attr("opacity", 1e-6)
+                .attr("x", function (d) { return d.x; })
+                .attr("y", function (d) { return d.y; })
+                .style("font-size", function (d) {
+                    v1 = d.r;
+                    v2 = d.r / 3;
+                    return Math.min(v1, v2) + "px";
+                })
+                .style("text-anchor", "middle")
+                .text(function (d) { return d.data.name; })
+                .transition(t)
+                .attr("opacity", 1);
         }
-        dataset = data
-        return dataset
-    }
 
 
-    function slide() {
+        function drawchart(dataset, year) {
+            data = []
+            d = dataset[year]["__overall"]["opinions"]
+            for (var ele in d) {
+                data.push({ "name": ele, "size": d[ele] });
+            }
+            dataset = data
+            return dataset
+        }
 
-        var data = [0, 0.005, 0.01, 0.015, 0.02, 0.025];
-        // Time
-        var dataTime = d3.range(0, 10).map(function (d) {
 
-            return new Date(2004 + d, 10, 3);
-        });
+        function slide() {
 
-        var value = 2004
-        // bubble(value);
+            var data = [0, 0.005, 0.01, 0.015, 0.02, 0.025];
+            // Time
+            var dataTime = d3.range(0, 10).map(function (d) {
 
-        var sliderTime = d3
-            .sliderBottom()
-            .min(d3.min(dataTime))
-            .max(d3.max(dataTime))
-            .step(1000 * 60 * 60 * 24 * 365)
-            .width(300)
-            .tickFormat(d3.timeFormat('%Y'))
-            .tickValues(dataTime)
-            .default(new Date(1998, 10, 3))
-            .on('onchange', val => {
-                cur = d3.timeFormat('%Y')(val)
-                d3.select('p#value-time').text(value);
-                if (cur != value) {
-                    value = cur
-                    console.log("Slide: " + cur)
-                    classes = drawchart(dataset, cur);
-                    redraw(classes)
-                    // bubble(cur);
-                }
-
+                return new Date(2003 + d, 10, 3);
             });
 
-        var gTime = d3
-            .select('div#slider-time')
-            .append('svg')
-            .attr('width', 500)
-            .attr('height', 100)
-            .append('g')
-            .attr('transform', 'translate(30,30)');
+            var value = parseInt(year);
 
-        gTime.call(sliderTime);
+            var sliderTime = d3
+                .sliderBottom()
+                .min(d3.min(dataTime))
+                .max(d3.max(dataTime))
+                .step(1000 * 60 * 60 * 24 * 365)
+                .width(300)
+                .tickFormat(d3.timeFormat('%Y'))
+                .tickValues(dataTime)
+                .default(new Date(value, 10, 3))
+                .on('onchange', val => {
+                    cur = d3.timeFormat('%Y')(val)
+                    d3.select('p#value-time').text(feat + " in " + value);
+                    if (cur != value) {
+                        value = cur
+                        classes = drawchart(dataset, cur);
+                        redraw(classes)
+                        // bubble(cur);
+                    }
 
-        d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
+                });
 
-    }
+            var gTime = d3
+                .select('div#slider-time')
+                .append('svg')
+                .attr('width', 500)
+                .attr('height', 100)
+                .append('g')
+                .attr('transform', 'translate(30,30)');
 
-});
+            gTime.call(sliderTime);
+
+            d3.select('p#value-time').text(feat + " in " + d3.timeFormat('%Y')(sliderTime.value()));
+
+        }
+
+    });
 
 
+}
+
+
+
+bubble();
