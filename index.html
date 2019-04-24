@@ -18,16 +18,19 @@
 	<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 
 	<script src="https://d3js.org/d3.v5.min.js"></script>
+	
 	<script src="https://unpkg.com/d3-simple-slider"></script>
 
 <script src="https://unpkg.com/d3-simple-slider"></script>
+<script src="js/bar/RadarChart.js"></script>
+
 </head>
 
 <body>
 
 
 	<div class="container">
-		<h1 style="text-align:center"">Amazon Cellphones Reviews</h1>
+		<h1 style="text-align:center">Amazon Cellphones Reviews</h1>
 		<h3>Year</h3>
 		<div class="row align-items-center">
 			<div class="col-sm-2">
@@ -36,12 +39,14 @@
 			<div class="col-sm">
 				<div id="slider-time"></div>
 				<div id='stacked-bar'></div>
+				<div id='chart'></div>
 			</div>
 		</div>
 	</div>
-	
 <script src="js/bar/stackedBar.js"></script>
+<script src="js/bar/script.js"></script>
 <script src="js/bar/slide.js"></script>
+
 <script>
 
 margin = {top: 20, right: 20, bottom: 30, left: 50},
@@ -59,17 +64,16 @@ margin = {top: 20, right: 20, bottom: 30, left: 50},
 				.attr("height", height + margin.top + margin.bottom)
 				.append("g")
 				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-				
 		svg.append("g")
 			.attr("class", "axis axis--x")
 			.attr("transform", "translate(0," + (height+5) + ")")
 			.call(xAxis);
-
 			svg.append("g")
 			.attr("class", "axis axis--y")
 			.attr("transform", "translate(0,0)")
 			.call(yAxis);
 </script>
+
 
 
 

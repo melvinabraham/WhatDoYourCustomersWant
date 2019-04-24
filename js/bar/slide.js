@@ -1,13 +1,14 @@
 //var data = [0, 0.005, 0.01, 0.015, 0.02, 0.025];
 // Time
 var dataTime = d3.range(0, 12).map(function(d) {
-
   return new Date(2003 + d, 10, 3);
 });
+var value = "2004"
 
-var value = "2006"
 stackedBar(value);
-
+console.log("done stacked");
+radar(value);
+console.log("done radar");
 var sliderTime = d3
   .sliderBottom()
   .min(d3.min(dataTime))
@@ -24,9 +25,8 @@ var sliderTime = d3
       value = cur
       console.log(cur)
       stackedBar(cur);
-	  
+	  radar(cur);
     }
-
   });
 
 var gTime = d3

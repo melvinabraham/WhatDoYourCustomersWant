@@ -7,7 +7,7 @@ var dataTime = d3.range(0, 12).map(function(d) {
 
 var value = "2006"
 stackedBar(value);
-
+GetData(value);
 var sliderTime = d3
   .sliderBottom()
   .min(d3.min(dataTime))
@@ -23,7 +23,8 @@ var sliderTime = d3
     if(cur != value) {
       value = cur
       console.log(cur)
-      stackedBar(cur);
+      stackedBar(cur)
+	  GetData(cur);
 	  
     }
 
