@@ -93,7 +93,8 @@ function bubble() {
 
         function drawchart(dataset, year) {
             data = []
-            d = dataset[year]["__overall"]["opinions"]
+            d = dataset[year][feat]["opinions"];
+            console.log(d)
             for (var ele in d) {
                 data.push({ "name": ele, "size": d[ele] });
             }
