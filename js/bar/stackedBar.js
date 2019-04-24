@@ -138,7 +138,7 @@ function stackedBarUpdate(curr_year){
 			item["negative_count"] = item["count"] - item["positive_count"];
 			//console.log(item);
 			year_data.push(item);
-			if (i == 10){
+			if (i == 11){
 				break;
 			}
 		}
