@@ -21,9 +21,9 @@ var sliderTime = d3
     cur = d3.timeFormat('%Y')(val)
     d3.select('p#value-time').text(value);
     if(cur != value) {
-      value = cur
-      console.log(cur)
-      stackedBar(cur);
+      value = cur;
+      console.log(cur);
+      stackedBarUpdate(cur);
 	  
     }
 

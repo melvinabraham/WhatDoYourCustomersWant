@@ -7,6 +7,12 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" 
+		integrity="sha384-FZY+KSLVXVyc1qAlqH9oCx1JEOlQh6iXfw3o2n3Iy32qGjXmUPWT9I0Z9e9wxYe3" 
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js" 
+		integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" 
+		crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 		crossorigin="anonymous"></script>
@@ -42,36 +48,6 @@
 	
 <script src="js/bar/stackedBar.js"></script>
 <script src="js/bar/slide.js"></script>
-<script>
-
-margin = {top: 20, right: 20, bottom: 30, left: 50},
-		//parseDate = d3.timeParse("%m/%Y"),
-		width = 960 - margin.left - margin.right,
-		height = 500 - margin.top - margin.bottom,
-		xScale = d3.scaleLinear().rangeRound([0, width]),
-		yScale = d3.scaleBand().rangeRound([height, 0]).padding(0.1),
-		color = d3.scaleOrdinal().range(["#a7cc74", "#f46842"]),
-		xAxis = d3.axisBottom(xScale),
-		yAxis =  d3.axisLeft(yScale),	//.tickFormat(,
-		
-		svg = d3.select("#stacked-bar").append("svg")
-				.attr("width", width + margin.left + margin.right)
-				.attr("height", height + margin.top + margin.bottom)
-				.append("g")
-				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-				
-		svg.append("g")
-			.attr("class", "axis axis--x")
-			.attr("transform", "translate(0," + (height+5) + ")")
-			.call(xAxis);
-
-			svg.append("g")
-			.attr("class", "axis axis--y")
-			.attr("transform", "translate(0,0)")
-			.call(yAxis);
-</script>
-
-
 
 </body>
 
