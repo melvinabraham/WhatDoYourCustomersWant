@@ -15,8 +15,11 @@ var d = [];
 	cont = yD['__overall'];
 	feat = cont['features'];
 	const feat_keys = Object.keys(feat);
-	for (var i = 0; i < 10; i++) {
+	for (var i = 0; i < 11; i++) {
+	if(feat_keys[i] != 'phone'){
 	new_feat[feat_keys[i]] = feat[feat_keys[i]]; 
+	}
+		
 	}
 	//console.log(new_feat);
 	var list = [];
