@@ -4,7 +4,6 @@ function bubble() {
     const urlParams = new URLSearchParams(window.location.search);
     const year = urlParams.get('year');	
     const feat = urlParams.get('feat');	
-    
 
     console.log(year)
     console.log(feat)
@@ -82,8 +81,8 @@ function bubble() {
                 .attr("y", function (d) { return d.y; })
                 .style("font-size", function (d) {
                     v1 = d.r;
-                    v2 = d.r / 2;
-                    return Math.max(12, v2) + "px";
+                    v2 = d.r / 3;
+                    return Math.min(v1, v2) + "px";
                 })
                 .style("text-anchor", "middle")
                 .text(function (d) { return d.data.name; })
@@ -131,6 +130,7 @@ function bubble() {
                         value = cur
                         classes = drawchart(dataset, cur);
                         redraw(classes)
+                        // bubble(cur);
                     }
 
                 });
@@ -138,7 +138,7 @@ function bubble() {
             var gTime = d3
                 .select('div#slider-time')
                 .append('svg')
-                .attr('width', 1000)
+                .attr('width', 500)
                 .attr('height', 100)
                 .append('g')
                 .attr('transform', 'translate(30,30)');
@@ -153,5 +153,7 @@ function bubble() {
 
 
 }
+
+
 
 bubble();
