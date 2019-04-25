@@ -29,7 +29,20 @@
 
 	<script src="https://unpkg.com/d3-simple-slider"></script>
 	<script src="js/bar/RadarChart.js"></script>
-
+	<style>
+		body {
+		  overflow: hidden;
+		  margin: 0;
+		  font-size: 14px;
+		  font-family: "Helvetica Neue", Helvetica;
+		}
+		
+		#chart {
+		  position: absolute;
+		  top: 50px;
+		  left: 100px;
+		}	
+	</style>
 </head>
 
 <body>
@@ -48,7 +61,7 @@
 		<div class="col-md-6">
 			<div id='stacked-bar' style="padding-left:150px"></div>
 		</div>
-		<div class="col-md-6">
+		<div id ="body" class="col-md-6">
 			<div id='chart'></div>
 		</div>
 	</div>
