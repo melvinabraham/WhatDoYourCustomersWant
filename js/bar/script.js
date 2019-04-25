@@ -45,9 +45,9 @@ var d = [];
 var mycfg = {
   w: w,
   h: h,
-  maxValue: 0.6,
+  maxValue: 0.5,
   levels: 6,
-  ExtraWidthX: 300
+  ExtraWidthX: 100
 }
 
 //Call function to draw the Radar chart
