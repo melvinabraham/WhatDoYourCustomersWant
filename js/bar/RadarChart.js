@@ -3,7 +3,7 @@ var RadarChart = {
   var cfg = {
 	 radius: 5,
 	 w: 300,
-	 h: 750,
+	 h: 100,
 	 factor: 1,
 	 factorLegend: .85,
 	 levels: 5,
@@ -12,7 +12,7 @@ var RadarChart = {
 	 opacityArea: 0.5,
 	 ToRight: 15,
 	 TranslateX: 100,
-	 TranslateY: 100,
+	 TranslateY: 40,
 	 ExtraWidthX: 100,
 	 ExtraWidthY: 100,
 	 color: d3.scaleOrdinal(d3.schemeCategory10)

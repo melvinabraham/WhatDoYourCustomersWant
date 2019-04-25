@@ -12,8 +12,8 @@ function stackedBar(curr_year) {
 
 margin = {top: 20, right: 20, bottom: 30, left: 50};
 //parseDate = d3.timeParse("%m/%Y"),
-width = 600 - margin.left - margin.right;
-height = 500 - margin.top - margin.bottom;
+width = 500 - margin.left - margin.right;
+height = 400 - margin.top - margin.bottom;
 xScale = d3.scaleLinear().rangeRound([0, width]);
 yScale = d3.scaleBand().rangeRound([height, 0]).padding(0.1);
 color = d3.scaleOrdinal().range(["#a7cc74", "#f46842"]);
