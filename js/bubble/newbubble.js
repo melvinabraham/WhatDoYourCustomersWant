@@ -7,7 +7,7 @@ function bubble() {
 
     console.log(year)
     console.log(feat)
-    file = "data\\year_feature_data.json";
+    file = "data\\year_features_5.json";
     d3.json(file).then(function (dataset) {
 
         console.log("here")
@@ -156,4 +156,3 @@ function bubble() {
 
 
 
-bubble();
