@@ -48,7 +48,7 @@ function bubble() {
 
             //EXIT
             circle.exit()
-            .attr("r", "white")
+            .attr("fill", "white")
                 .transition(t)
                 .attr("r", 1e-6)
                 .remove();
@@ -227,7 +227,7 @@ function createOpinionDict(dataset) {
 
     for (var year = 2004; year <= 2014; ++year) {
 
-        yearwiseopinions = dataset[year][feat]["opinions"]
+        yearwiseopinions = dataset[year][feat]["opinions"];
 
         for (word in yearwiseopinions) {
 
