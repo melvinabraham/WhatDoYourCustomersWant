@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What do your customers want?</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="bulma.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1 class="title">What do your customers want?</h1>
+  <!-- <p class="subtitle">
+                    An analysis of Amazon reviews for Cell phones between 2003-2014.
+                  </p> -->
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column">
+        <a id="yearwise" class="button is-link" style="float: right;">
+          <span class="icon">
+            <i class="fas fa-play"></i>
+          </span>
+          <span>Yearwise</span>
+        </a>
+        <!-- <button class="button is-link" id="yearwise" style="float: right;">Yearwise</button> -->
+      </div>
+      <div class="column">
+        <div id="slider-time"></div>
+      </div>
+      <div class="column">
+        <a id="overall" class="button">
+          <span class="icon">
+            <i class="fa fa-chart-bar"></i>
+          </span>
+          <span>Overall</span>
+        </a>
+        <!-- <button id="overall" class="button">Overall</button> -->
+      </div>
+
+    </div>
+    <div class="columns">
+      <div class="column">
+        <div id="legend">
+        </div>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <div id="body">
+          <div id="bubble-chart"></div>
+        </div>
+
+      </div>
+      <div class="column">
+        <!-- <div id="radar-chart">Second column</div> -->
+        <div id="scatter-chart"></div>
+      </div>
+    </div>
+    <h2>Observations on <span id="year">opinion word</span> reviews</h2>
+    <br>
+    <div class="columns">
+      <div class="column">
+       <b> Bubble Chart </b>uses opinion words as data points and plots them with the additional dimension of size of the
+        bubble which shows how frequently that word is mentioned for a particular feature, as well as colors which
+        signify the sentiment of the of the data. Intensity of the colors specify how much they have been used in
+        previous years as well.
+        In this graph ‘green’ color is used for positive opinion words, ‘red’ for negative opinion words and ‘blue’ for
+        neutral words. If the same words are repeated in the previous years then it will get darker which shows how
+        frequent that word was mentioned by the customers over the years. This is achieved by normalizing the number of
+        mentions for every opinion word in a particular year, and using this to set the color of the bubble.
+      </div>
+      <div class="column">
+        <b>Scatter Plot </b>shows the comparison between reviews and ratings given by a customer for a particular
+        feature. This plot uses Cartesian coordinates to compare the data by using the size of the data points to aid in
+        comparison to our data.
+
+        Colors add the dimension of sentiment, and in helping sellers understand the emotion associated with every
+        opinion word. We have used ‘blue’ for neutral rating, ‘green’ for positive reviews and ‘red’ for negative
+        reviews. In addition to this, the colors go from a lighter shade to a darker shade based on how frequently the
+        word has been used in the years before. This helps the sellers get insight into what are the most common ways
+        that customers describe their products, and also allow for easy analysis of any kind of criticism that the
+        customer might have for that particular feature.
+
+
+      </div>
+    </div>
+  </div>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <!-- <script src="bulma.js"></script> -->
+  <script>
+    const yearRef = document.getElementById('year')
+    const overallRef = document.getElementById('overall')
+    const yearwiseRef = document.getElementById('yearwise')
+    // Notice how this gets configured before we load Font Awesome
+    window.FontAwesomeConfig = { autoReplaceSvg: false }
+  </script>
+  <script src="d3.v4.min.js"></script>
+  <!-- <script src="d3-scale-chromatic.v1.min.js"></script> -->
+  <script src="https://unpkg.com/d3-simple-slider"></script>
+  <script src="https://unpkg.com/jeezy@1.11.2/lib/jeezy.min.js"></script>
+  <script src="bubble.js"></script>
+  <script src="scatter.js"></script>
+  <script src="script2.js"></script>
+</body>
+
+</html>+

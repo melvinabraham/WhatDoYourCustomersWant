@@ -1,0 +1,8 @@
+textblob
+pandas
+scikit-learn
+scipy
+matplotlib
+spacy
+textacy
+numpy

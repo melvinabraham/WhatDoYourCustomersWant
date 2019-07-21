@@ -1,0 +1,69 @@
+body {
+      color: #37474f;
+      line-height: 1.5;
+      font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    }
+    svg {
+      margin: auto;
+      display: block;
+    }
+    /* .pointer, circle {
+      cursor: pointer;
+      user-select: none;
+    } */
+    /*Styling for the lines connecting the labels to the slices*/
+    polyline{
+        opacity: .2;
+        stroke: black;
+        stroke-width: 1px;
+        fill: none;
+    }
+    
+    #countries-chart {
+      height: 500px;
+      /* border-right: 1px solid black;  */
+    }
+    #countries-chart>svg {
+      display: none;
+    }
+    .vertical-hr {
+      width  : 1px;
+      height   : 50%;  /* or 100px */
+      background: #555;
+    }
+    .selected {
+      fill: rgb(255, 127, 14) !important;
+    }
+    .hover {
+      fill: rgba(255, 127, 14, 0.3) !important;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .row>div {
+      /* float: left; */
+      width: 50%;
+    }
+    h1,h2,h3,h4 {
+      text-align: center;
+    }
+    .explanation {
+      width: 750px;
+      margin: auto;
+      margin-top: 50px;
+    }
+
+    .tabs-content li {
+        display: none;
+        list-style: none;
+    }
+    
+    .tabs-content li.is-active {
+        display: block;
+    }
+
+    .bar {
+        cursor: pointer;
+    }
