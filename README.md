@@ -18,3 +18,5 @@ project:
     • How do ratings and reviews of products compare?
   
 
+
+This is built with HTML5, CSS3, JavaScript, & d3.js
